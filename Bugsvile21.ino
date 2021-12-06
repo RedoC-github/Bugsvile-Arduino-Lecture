@@ -1,17 +1,12 @@
-#define LEDCOUNT 3
-int ledpin[] = {7, 8, 4};
-
 void setup() {
-    for (int i = 0; i < LEDCOUNT; i++)
-        pinMode(ledpin[i], OUTPUT);
+    pinMode(8, INPUT);
+    pinMode(6, OUTPUT);
 }
 
 void loop() {
-    for (int i = 0; i < LEDCOUNT; i++)
-        digitalWrite(ledpin[i], HIGH);
-    delay(1000);
-    for (int i = 0; i < LEDCOUNT; i++)
-        digitalWrite(ledpin[i], LOW);
-    delay(1000);
+    if (digitalRead(8) == HIGH)
+        digitalWrite(6, HIGH);
+    else
+        digitalWrite(6, LOW);
 }
 
