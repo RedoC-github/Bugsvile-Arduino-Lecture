@@ -1,12 +1,17 @@
+int checkled = 6;
+
 void setup() {
-    pinMode(8, INPUT);
-    pinMode(6, OUTPUT);
+    pinMode(checkled, OUTPUT);
+    Serial.begin(9600);
 }
 
 void loop() {
-    if (digitalRead(8) == HIGH)
-        digitalWrite(6, HIGH);
-    else
-        digitalWrite(6, LOW);
+    int _inp_cds = analogRead(0);
+    int _outp_led = map(_inp_cds, 0, 1023, 0, 255);
+
+    Serial.print("Light Level: ");
+    Serial.println(_outp_led);
+    analogWrite(checkled, _outp_led);
+    delay(100);
 }
 
